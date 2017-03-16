@@ -6,9 +6,11 @@
 
         createString() {
             let askQuestion = this.question
-            for (let words of this.answers)
+            for (let words of this.answers) {
                 askQuestion += "\n" + words;
-            prompt(askQuestion);
+            }
+            ;
+            
         }
 
         grade(guessNum: number) {
@@ -21,9 +23,13 @@
         answers: Array<string>;
 
         takeQuiz() {
+            let answerArr= []
             for (let i = 0; i < this.questions.length; i++) {
                 this.questions[i].createString()
+                answerArr.push
             };
+            console.log(answerArr);
+           
 
         }
 

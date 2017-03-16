@@ -9,7 +9,7 @@ var QuizApp;
                 var words = _a[_i];
                 askQuestion += "\n" + words;
             }
-            prompt(askQuestion);
+            ;
         };
         Question.prototype.grade = function (guessNum) {
             return guessNum == this.correctAnswer;
@@ -20,10 +20,13 @@ var QuizApp;
         function Quiz() {
         }
         Quiz.prototype.takeQuiz = function () {
+            var answerArr = [];
             for (var i = 0; i < this.questions.length; i++) {
                 this.questions[i].createString();
+                answerArr.push;
             }
             ;
+            console.log(answerArr);
         };
         Quiz.prototype.grade = function (guesses) {
             var numCorrect = 0;
