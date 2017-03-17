@@ -4,12 +4,13 @@ var QuizApp;
         function Question() {
         }
         Question.prototype.createString = function () {
+            var choiceNum = 0;
             var askQuestion = this.question;
             for (var _i = 0, _a = this.answers; _i < _a.length; _i++) {
                 var words = _a[_i];
-                askQuestion += "\n" + words;
+                askQuestion += "\n" + ++choiceNum + ". " + words;
             }
-            ;
+            return askQuestion;
         };
         Question.prototype.grade = function (guessNum) {
             return guessNum == this.correctAnswer;
@@ -20,13 +21,14 @@ var QuizApp;
         function Quiz() {
         }
         Quiz.prototype.takeQuiz = function () {
-            var answerArr = [];
+            var numRight = 0;
             for (var i = 0; i < this.questions.length; i++) {
-                this.questions[i].createString();
-                answerArr.push;
+                var guess = prompt(this.questions[i].createString());
+                if (this.questions[i].grade(this.questions[i].answers.indexOf(guess))) {
+                    numRight++;
+                }
             }
-            ;
-            console.log(answerArr);
+            alert("You got " + numRight + " out of " + this.questions.length + " right");
         };
         Quiz.prototype.grade = function (guesses) {
             var numCorrect = 0;
@@ -61,6 +63,7 @@ var QuizApp;
     question5.correctAnswer = 1;
     var quiz1 = new Quiz();
     quiz1.questions = [question1, question2, question3, question4, question5];
+    alert("Welcome to the quiz! Please be sure to type the answers as they appear!");
     quiz1.takeQuiz();
 })(QuizApp || (QuizApp = {}));
 //# sourceMappingURL=quiz.js.map

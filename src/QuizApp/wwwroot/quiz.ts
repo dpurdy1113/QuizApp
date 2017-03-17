@@ -3,13 +3,14 @@
         question: string;
         answers: Array<string>;
         correctAnswer: number;
-
-        createString() {
+        
+        createString():string {
+            let choiceNum = 0
             let askQuestion = this.question
             for (let words of this.answers) {
-                askQuestion += "\n" + words;
+                askQuestion += "\n" + ++choiceNum +". " + words;
             }
-            ;
+            return askQuestion;
             
         }
 
@@ -20,17 +21,15 @@
 
     class Quiz {
         questions: Question[];
-        answers: Array<string>;
-
+        
         takeQuiz() {
-            let answerArr= []
+            let numRight = 0;
             for (let i = 0; i < this.questions.length; i++) {
-                this.questions[i].createString()
-                answerArr.push
-            };
-            console.log(answerArr);
-           
-
+                let guess = prompt(this.questions[i].createString());
+                if (this.questions[i].grade(this.questions[i].answers.indexOf(guess))) { numRight++;}               
+            }
+            
+            alert(`You got ${numRight} out of ${this.questions.length} right`);
         }
 
         grade(guesses: number[]) {
@@ -72,6 +71,8 @@
 
     let quiz1 = new Quiz()
     quiz1.questions = [question1, question2, question3, question4, question5];
+
+    alert("Welcome to the quiz! Please be sure to type the answers as they appear!");
     quiz1.takeQuiz();
 
 
